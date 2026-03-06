@@ -1,0 +1,24 @@
+Revision 07/08/2008 by Rick Davin.  Version 4.
+        Coded an array to hold a collection of sheet names, corresponding to IA TYPE, and their respective row and column counts.
+        This greatly improves performance as I now longer laboriously and repetitively scan through a sheet to find the last row.  
+        This was time consuming for larger node dumps.  Now a 16MB node dump takes less than 8 minutes instead of more than 50.
+        
+
+
+Revision 04/22/2008 by Rick
+        Added Post_Parse and affiliated subs to add 3 columns to each sheet _compound_, _block_, and _unit_.
+        Then the NAME in Col A is chopped up into those pieces.  CAUTION: _unit_ is suspect as it will only return
+        the first 2 consecutive digits that it finds within the BLOCK.  E.g. V160MAN would return 16, not 60.
+
+
+Revision 7/12/2006 by Rick
+        Add PNT_NO to the _INDEX_ page
+
+
+Revision 7/25/2005
+
+The Sheet Stats ignores any sheet whose name begins with an underscore.  This means points on the _INDEX_ page won't be counted twice.
+
+An Hourglass now appears while the macro chugs along.
+
+A new module, Fox_Remogrifier, has been added.  Its main macro is Excel2Fox.  It processes all sheets whose name does not begin with an underscore.  It dumps everything to a text file.
